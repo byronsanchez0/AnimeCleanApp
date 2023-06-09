@@ -1,0 +1,16 @@
+query GetCharacterDetails ($characterId: Int)
+{
+    Character(id: $characterId) {
+        id
+        name {
+            first
+            last
+        }
+        age
+        image {
+            medium
+        }
+        description
+
+    }
+}
