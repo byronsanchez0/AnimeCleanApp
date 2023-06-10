@@ -8,8 +8,9 @@ import com.example.data.mappers.AnimeQueryListToAnimeList
 import com.example.domain.AnimeRepo
 import com.example.domain.model.AnimeDetailsModel
 import com.example.domain.model.AnimeModel
+import javax.inject.Inject
 
-class AnimeRepoImpl(
+class AnimeRepoImpl @Inject constructor(
     private val apolloClient: ApolloClient
 ) : AnimeRepo {
     override suspend fun getAnimes(): List<AnimeModel> {

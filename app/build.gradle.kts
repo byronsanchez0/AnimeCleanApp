@@ -82,6 +82,8 @@ dependencies {
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
 
+    implementation(libs.apollographql)
+
 }
 
 kapt {
