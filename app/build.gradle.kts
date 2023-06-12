@@ -81,9 +81,14 @@ dependencies {
 
     implementation(libs.dagger.hilt)
     kapt(libs.dagger.hilt.compiler)
-
     implementation(libs.apollographql)
-
+    implementation(libs.coil.compose)
+    implementation(libs.compose.util)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.bundles.pagin)
+    implementation(libs.navigation.compose)
+    implementation(libs.compose.material.icons.core)
+    implementation(libs.compose.material.icons.extended)
 }
 
 kapt {

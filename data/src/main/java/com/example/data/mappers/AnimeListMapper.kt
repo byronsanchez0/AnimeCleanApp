@@ -1,13 +1,12 @@
 package com.example.data.mappers
 
 import com.example.data.GetAnimeListQuery
-import com.example.domain.model.AnimeModel
+import com.example.domain.search.model.AnimeModel
 
-fun GetAnimeListQuery.Medium.AnimeQueryListToAnimeList(): AnimeModel{
+fun GetAnimeListQuery.Medium.AnimeQueryListToAnimeList(): AnimeModel {
     return AnimeModel(
         id = id,
-        title = title?.english.orEmpty(),
-        coverImg = coverImage?.large.orEmpty()
-
+        title = title?.romaji.orEmpty(),
+        coverImg = coverImage?.extraLarge.orEmpty()
     )
 }

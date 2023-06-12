@@ -1,10 +1,10 @@
 package com.example.data.mappers
 
 import com.example.data.GetAnimeDetailsQuery
-import com.example.domain.model.AnimeDetailsModel
-import com.example.domain.model.Character
+import com.example.domain.details.model.AnimeDetailsModel
+import com.example.domain.details.model.Character
 
-fun GetAnimeDetailsQuery.Media.AnimeDetailsQueryToAnimeDetails():AnimeDetailsModel{
+fun GetAnimeDetailsQuery.Media.AnimeDetailsQueryToAnimeDetails(): AnimeDetailsModel {
     return AnimeDetailsModel(
         id = id,
         name = title?.romaji.orEmpty(),

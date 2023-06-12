@@ -12,32 +12,32 @@ import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-object AnimeModule {
-
-    @Provides
-    @Singleton
-    fun provideAnimeRepo(
-        apolloClient: ApolloClient,
-    ): AnimeRepo {
-        return AnimeRepoImpl(apolloClient)
-    }
-
-    @Provides
-    @Singleton
-    fun provideGetAnimeListUseCase(
-        animeRepo:AnimeRepo
-    ): GetAnimeListUseCase {
-        return GetAnimeListUseCase(animeRepo)
-    }
-
-    @Provides
-    @Singleton
-    fun provideGetAnimeUseCase(
-        animeRepo:AnimeRepo
-    ): GetAnimeUseCase {
-        return GetAnimeUseCase(animeRepo)
-    }
-
-}
+//@Module
+//@InstallIn(SingletonComponent::class)
+//object AnimeModule {
+//
+//    @Provides
+//    @Singleton
+//    fun provideAnimeRepo(
+//        apolloClient: ApolloClient,
+//    ): AnimeRepo {
+//        return AnimeRepoImpl(apolloClient)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideGetAnimeListUseCase(
+//        animeRepo:AnimeRepo
+//    ): GetAnimeListUseCase {
+//        return GetAnimeListUseCase(animeRepo)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun provideGetAnimeUseCase(
+//        animeRepo:AnimeRepo
+//    ): GetAnimeUseCase {
+//        return GetAnimeUseCase(animeRepo)
+//    }
+//
+//}
