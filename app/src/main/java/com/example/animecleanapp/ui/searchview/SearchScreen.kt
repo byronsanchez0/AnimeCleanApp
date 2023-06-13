@@ -51,7 +51,7 @@ fun SearchScreen(
         onSearch = uiStateSearch.onSearchChanged,
         onTypeChanged = uiStateSearch.onTypeChanged,
         onSortChanged = uiStateSearch.onSortChanged,
-        onToggleFavorite = { animes -> uiStateSearch.addToFavorites },
+        onToggleFavorite = { animes -> uiStateSearch.addToFavorites(animes) },
         favoriteAnime = uiState.favoriteAnime,
         navController = navController,
     )
@@ -76,11 +76,11 @@ fun SearchScreenContent(
 
     Column(
         modifier = Modifier
-            .padding(top = 80.dp, start = 16.dp, end = 16.dp)
+            .padding(top = 10.dp, start = 16.dp, end = 16.dp)
             .fillMaxSize()
     ) {
         SearchInputBar(onSearch)
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(3.dp))
         FilterOptions(type = selectedType, sort = selectedSort, onTypeSelected = { type ->
             selectedType = type
             onTypeChangedState(type)

@@ -10,6 +10,7 @@ import com.example.data.reposimplementation.FavoriteRepoImpl
 import com.example.domain.AnimeRepo
 import com.example.domain.GetAnimeListUseCase
 import com.example.domain.GetAnimeUseCase
+import com.example.domain.GetCharacterDetailsUseCase
 import com.example.domain.repositories.FavoriteAnimeRepo
 import dagger.Module
 import dagger.Provides
@@ -86,7 +87,7 @@ object DataModule {
     @Singleton
     fun provideCharacterUseCase(
         animeRepo: AnimeRepo
-    ): GetAnimeUseCase {
-        return GetAnimeUseCase(animeRepo)
+    ): GetCharacterDetailsUseCase {
+        return GetCharacterDetailsUseCase(animeRepo)
     }
 }

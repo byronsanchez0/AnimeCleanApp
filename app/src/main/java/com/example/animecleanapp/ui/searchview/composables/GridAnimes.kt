@@ -7,9 +7,11 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
+import com.example.domain.favorites.FavoriteAnime
 import com.example.domain.search.model.AnimeModel
 
 @Composable
@@ -18,8 +20,7 @@ fun GridAnimes (
     animeList: LazyPagingItems<AnimeModel>,
     navController: NavHostController,
     onToggleFavorite: (AnimeModel) -> Unit,
-    favoriteAnime: Set<Int>,
-    modifier: Modifier = Modifier
+    favoriteAnime: Set<Int>
 
 ){
     Box {
@@ -35,15 +36,22 @@ fun GridAnimes (
                 if (anime != null) {
                     AnimeItem(
                         anime = anime,
+                        onSelectedFavAnime = onToggleFavorite,
+                        favoriteAnime = favoriteAnime,
+                        navController = navController,
                         modifier = Modifier.fillMaxSize(),
-                        onSelectedAnime = { println("Just seeing arounf") }
+
+
+
                     )
                 }
 
             }
         }
         if (isLoading) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
     }
 }

@@ -34,7 +34,8 @@ import javax.inject.Inject
 class SearchAnimesViewModel @Inject constructor(
     private val getAnimeListUseCase: GetAnimeListUseCase,
     private val addFavoriteAnimeUseCase: AddFavoriteAnimeUseCase,
-    private val deleteFavoriteAnimeUseCase: DeleteFavoriteAnimeUseCase
+    private val deleteFavoriteAnimeUseCase: DeleteFavoriteAnimeUseCase,
+    private val updateFavoriteAnimesUseCase: UpdateFavoriteAnimesUseCase
 
 ) : ViewModel() {
 
@@ -66,6 +67,14 @@ class SearchAnimesViewModel @Inject constructor(
     )
 
     val uiSearchState = _uiSearchState.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            updateFavoriteAnimesUseCase().collect { updatedFavoriteAnime ->
+                _uiState.value = _uiState.value.copy(favoriteAnime = updatedFavoriteAnime)
+            }
+        }
+    }
 
 
     private fun search(text: String) {

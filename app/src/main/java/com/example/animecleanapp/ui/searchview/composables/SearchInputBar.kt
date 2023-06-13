@@ -27,7 +27,6 @@ fun SearchInputBar(
     onSearch:(String) -> Unit
 ) {
     var query by remember { mutableStateOf("") }
-    var movies by remember { mutableStateOf<List<AnimeModel>>(emptyList()) }
 
     TextField(
         value = query,

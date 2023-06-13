@@ -3,4 +3,5 @@
     <string name="anime">Anime App</string>
     <string name="favorite">favorite</string>
     <string name="filter">filter\n</string>
+    <string name="add_to_favorites">addtofavorites</string>
 </resources>

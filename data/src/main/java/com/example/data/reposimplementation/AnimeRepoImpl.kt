@@ -50,7 +50,7 @@ class AnimeRepoImpl @Inject constructor(
     }
 
 
-    override suspend fun getAnimesDetails(id: Int): AnimeDetailsModel? {
+    override suspend fun getAnimeDetails(id: Int): AnimeDetailsModel? {
         val query = GetAnimeDetailsQuery(id.toOptional())
         return apolloClient.executeQuery(query) { data ->
             data.Media?.AnimeDetailsQueryToAnimeDetails()

@@ -13,7 +13,7 @@ interface AnimeRepo {
         sort:List<AnimeSort>,
         type: AnimeType
     ):List<AnimeModel>
-    suspend fun getAnimesDetails(id: Int): AnimeDetailsModel?
+    suspend fun getAnimeDetails(id: Int): AnimeDetailsModel?
 
     suspend fun getAnimeCharacters(id: Int): Character
 }
