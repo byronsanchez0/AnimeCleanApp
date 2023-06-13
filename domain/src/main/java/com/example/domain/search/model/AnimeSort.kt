@@ -1,7 +1,7 @@
 package com.example.domain.search.model
 
 enum class AnimeSort {
-    POPULARITY,
-    SCORE,
-    STATUS
+    START_DATE,
+    EPISODES_DESC,
+    POPULARITY_DESC
 }

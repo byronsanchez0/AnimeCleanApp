@@ -3,11 +3,14 @@ package com.example.data.di
 import android.content.Context
 import androidx.room.Room
 import com.apollographql.apollo3.ApolloClient
-import com.example.data.database.AnimeDataBase
-import com.example.data.local.AnimeRepoImpl
+import com.example.data.local.DaoFavAnime
+import com.example.data.local.FavAnimeDataBase
+import com.example.data.reposimplementation.AnimeRepoImpl
+import com.example.data.reposimplementation.FavoriteRepoImpl
 import com.example.domain.AnimeRepo
 import com.example.domain.GetAnimeListUseCase
 import com.example.domain.GetAnimeUseCase
+import com.example.domain.repositories.FavoriteAnimeRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,6 +21,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+
+    //apollo client
     @Provides
     @Singleton
     fun provideApolloClient(): ApolloClient {
@@ -26,15 +31,23 @@ object DataModule {
             .build()
     }
 
+    //favorites
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext appContext: Context): AnimeDataBase {
+    fun provideFavDatabase(@ApplicationContext appContext: Context): FavAnimeDataBase {
         return Room.databaseBuilder(
             appContext,
-            AnimeDataBase::class.java,
-            "AnimeDatabase"
+            FavAnimeDataBase::class.java,
+            "AnimeFavDatabase"
         ).build()
     }
+
+    @Provides
+    fun provideFavoriteAnimeDao(database: FavAnimeDataBase): DaoFavAnime {
+        return database.animeDao()
+    }
+
+    //Repos
 
     @Provides
     @Singleton
@@ -44,6 +57,15 @@ object DataModule {
         return AnimeRepoImpl(apolloClient)
     }
 
+    @Provides
+    @Singleton
+    fun provideFavAnimeRepo(
+        daoFavAnime: DaoFavAnime,
+    ): FavoriteAnimeRepo {
+        return FavoriteRepoImpl(daoFavAnime)
+    }
+
+    //useCases
     @Provides
     @Singleton
     fun provideGetAnimeListUseCase(

@@ -13,6 +13,7 @@ dependencies {
 
     implementation (libs.gson)
     implementation(libs.javax.inject)
+    implementation(libs.kotlinx.coroutines.core)
 
 
 }

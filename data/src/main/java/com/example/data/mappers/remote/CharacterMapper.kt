@@ -1,4 +1,4 @@
-package com.example.data.mapper.apollo
+package com.example.data.mappers.remote
 
 import com.example.data.GetCharacterDetailsQuery
 import com.example.domain.details.model.Character

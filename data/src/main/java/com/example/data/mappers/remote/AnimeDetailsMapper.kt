@@ -1,4 +1,4 @@
-package com.example.data.mappers
+package com.example.data.mappers.remote
 
 import com.example.data.GetAnimeDetailsQuery
 import com.example.domain.details.model.AnimeDetailsModel

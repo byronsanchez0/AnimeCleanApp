@@ -1,4 +1,4 @@
-package com.example.data.local
+package com.example.data.reposimplementation
 
 import com.apollographql.apollo3.ApolloClient
 import com.example.data.GetAnimeDetailsQuery
@@ -6,10 +6,10 @@ import com.example.data.GetAnimeListQuery
 import com.example.data.GetCharacterDetailsQuery
 import com.example.data.apolloextension.executeQuery
 import com.example.data.apolloextension.toOptional
-import com.example.data.mapper.apollo.toAnimeCharacter
-import com.example.data.mappers.toMediaSort
-import com.example.data.mappers.AnimeDetailsQueryToAnimeDetails
-import com.example.data.mappers.AnimeQueryListToAnimeList
+import com.example.data.mappers.remote.toAnimeCharacter
+import com.example.data.mappers.remote.toMediaSort
+import com.example.data.mappers.remote.AnimeDetailsQueryToAnimeDetails
+import com.example.data.mappers.remote.AnimeQueryListToAnimeList
 import com.example.domain.AnimeRepo
 import com.example.domain.details.model.AnimeDetailsModel
 import com.example.domain.details.model.Character

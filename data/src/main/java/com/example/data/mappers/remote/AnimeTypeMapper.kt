@@ -1,4 +1,4 @@
-package com.example.data.mapper.apollo
+package com.example.data.mappers.remote
 
 import com.example.data.type.MediaType
 import com.example.domain.search.model.AnimeType
