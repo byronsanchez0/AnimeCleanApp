@@ -30,8 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.animecleanapp.R
+import com.example.animecleanapp.ui.theme.AnimeCleanAppTheme
 import com.example.domain.details.model.Character
-import kotlin.math.log
 
 @Composable
 fun CharacterItem(characters: List<Character>, onCharacterClick: (Int) -> Unit) {
@@ -45,8 +45,9 @@ fun CharacterItem(characters: List<Character>, onCharacterClick: (Int) -> Unit) 
                     .padding(8.dp)
                     .width(120.dp)
                     .height(150.dp)
-                    .clickable { onCharacterClick(character.id)
-                               Log.wtf("id no furula", "${character.id}")
+                    .clickable {
+                        onCharacterClick(character.id)
+                        Log.wtf("id no furula", "${character.id}")
                     },
             ) {
                 Column(
@@ -98,30 +99,33 @@ fun CharacterItem(characters: List<Character>, onCharacterClick: (Int) -> Unit) 
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun PreviewCharacterItem() {
-//    val characters = listOf(
-//        Character(
-//            id = 1,
-//            name = "Rengoku",
-//            image = "https://www.geekmi.news/__export/1641913206480/sites/debate/img/2022/01/11/rengoku_x2x.jpg_554688468.jpg",
-//            description = null
-//        ),
-//        Character(
-//            id = 2,
-//            name = "Tanjiro",
-//            image = "https://wave.fr/images/1916/05/demon-slayer-nouveau-manga-phenomene-1.jpg",
-//            description = null
-//        ),
-//        Character(
-//            id = 3,
-//            name = "Kanroji",
-//            image = "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2023/04/kimetsu-no-yaiba-husbando-mitsuri-fanart.jpg",
-//            description = null
-//        )
-//    )
-//    AnimeAppTheme {
-//        CharacterItem(characters = characters, onCharacterClick = { /* Do something */ })
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun PreviewCharacterItem() {
+    val characters = listOf(
+        Character(
+            id = 1,
+            name = "Rengoku",
+            image = "https://www.geekmi.news/__export/1641913206480/sites/debate/img/2022/01/11/rengoku_x2x.jpg_554688468.jpg",
+            age = "25",
+            description = null
+        ),
+        Character(
+            id = 2,
+            name = "Tanjiro",
+            image = "https://wave.fr/images/1916/05/demon-slayer-nouveau-manga-phenomene-1.jpg",
+            age = "25",
+            description = null
+        ),
+        Character(
+            id = 3,
+            name = "Kanroji",
+            image = "https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2023/04/kimetsu-no-yaiba-husbando-mitsuri-fanart.jpg",
+            age = "25",
+            description = null
+        )
+    )
+    AnimeCleanAppTheme {
+        CharacterItem(characters = characters, onCharacterClick = { /* Do something */ })
+    }
+}

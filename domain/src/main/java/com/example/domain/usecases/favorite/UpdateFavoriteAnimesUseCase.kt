@@ -7,7 +7,6 @@ import javax.inject.Inject
 
 class UpdateFavoriteAnimesUseCase @Inject constructor(
     private val favoriteRepo:FavoriteAnimeRepo){
-
     operator fun invoke(): Flow<Set<Int>> {
         return favoriteRepo.favoriteAnime.map { list ->
             list.map { it.id }.toSet()

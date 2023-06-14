@@ -7,17 +7,15 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.animecleanapp.paging.AnimePagingSource
 import com.example.animecleanapp.ui.favoritesview.FavUiState
 import com.example.animecleanapp.ui.searchview.uistate.SearchAnimeUiState
+import com.example.animecleanapp.ui.searchview.utils.paging.AnimePagingSource
 import com.example.domain.GetAnimeListUseCase
-import com.example.domain.GetAnimeUseCase
 import com.example.domain.search.model.AnimeModel
 import com.example.domain.search.model.AnimeSort
 import com.example.domain.search.model.AnimeType
 import com.example.domain.usecases.favorite.AddFavoriteAnimeUseCase
 import com.example.domain.usecases.favorite.DeleteFavoriteAnimeUseCase
-import com.example.domain.usecases.favorite.GetFavoritesAnimesUseCase
 import com.example.domain.usecases.favorite.UpdateFavoriteAnimesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,7 +24,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -44,10 +41,7 @@ class SearchAnimesViewModel @Inject constructor(
     private val _sort = MutableStateFlow<List<AnimeSort>>(listOf())
 
     private val _isLoading = MutableStateFlow(false)
-    private val _selectedAnime = MutableStateFlow<AnimeModel?>(null)
     val isLoading = _isLoading.asStateFlow()
-    val selectedAnime = _selectedAnime.asStateFlow()
-//    val onSearch = ::search
 
     private val _uiState = MutableStateFlow(
         FavUiState(
@@ -130,6 +124,7 @@ class SearchAnimesViewModel @Inject constructor(
         }.flatMapLatest { (type, sort, search) ->
             createPaging(type, sort, search).flow
         }.cachedIn(viewModelScope)
+
     companion object {
         private const val PAGE_SIZE = 10
     }

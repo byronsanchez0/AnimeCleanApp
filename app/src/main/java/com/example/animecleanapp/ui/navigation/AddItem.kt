@@ -1,4 +1,4 @@
-package com.example.newsapp.components.navigation
+package com.example.animecleanapp.ui.navigation
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.size

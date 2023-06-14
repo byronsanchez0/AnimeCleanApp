@@ -1,4 +1,4 @@
-package com.example.animecleanapp.navigation
+package com.example.animecleanapp.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -6,24 +6,23 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.animecleanapp.ui.CharacterDetails.CharacterDetailsScreen
+import com.example.animecleanapp.ui.characterview.CharacterDetailsScreen
 import com.example.animecleanapp.ui.detailsview.DetailsScreen
 import com.example.animecleanapp.ui.favoritesview.FavoritesScreen
-import com.example.animecleanapp.ui.searchview.composables.SearchScreen
+import com.example.animecleanapp.ui.searchview.SearchScreen
 
 @Composable
 fun BottomNavGraph(
     navHostController: NavHostController
 ) {
-
     NavHost(
         navController = navHostController,
         startDestination = "animesearchscreen"
     ) {
-        composable("animesearchscreen") {
+        composable(BottomNavItem.SearchAnime.route) {
             SearchScreen(navHostController)
         }
-        composable("favorites") {
+        composable(BottomNavItem.Favorites.route) {
             FavoritesScreen(navHostController)
         }
         composable(
@@ -34,7 +33,6 @@ fun BottomNavGraph(
             backStackEntry.arguments?.getInt("id")?.let { id ->
                 DetailsScreen(id, navHostController)
             }
-
         }
         composable(
             "character/{characterId}",
@@ -44,7 +42,6 @@ fun BottomNavGraph(
             backStackEntry.arguments?.getInt("characterId")?.let { characterId ->
                 CharacterDetailsScreen(characterId)
             }
-
         }
     }
 }

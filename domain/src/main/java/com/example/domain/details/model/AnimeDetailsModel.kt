@@ -1,7 +1,4 @@
 package com.example.domain.details.model
-
-
-
 data class AnimeDetailsModel(
     val id: Int,
     val name: String,
@@ -14,7 +11,6 @@ data class AnimeDetailsModel(
     val description: String,
     val characters: List<Character>?
 )
-
 data class Character(
     val id: Int,
     val name: String?,

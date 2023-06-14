@@ -1,4 +1,4 @@
-package com.example.animecleanapp.ui.searchview.filtersort
+package com.example.animecleanapp.ui.searchview.utils.filtersort
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,7 +24,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -88,6 +87,7 @@ fun SelectFilterDropdown(
         }
     }
 }
+
 private const val MAX_LINE_TEXT_VALUE = 1
 private const val ALPHA_VALUE = 0.08f
 
@@ -96,7 +96,7 @@ private const val ALPHA_VALUE = 0.08f
 fun PreviewSelectFilterDropdown() {
     val items = listOf("Item 1")
     var selectedItem by remember { mutableStateOf(items.first()) }
-    MaterialTheme{
+    MaterialTheme {
         SelectFilterDropdown(
             items = items,
             selectedItem = selectedItem,

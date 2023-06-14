@@ -10,6 +10,5 @@ query GetCharacterDetails ($characterId: Int)
             medium
         }
         description
-
     }
 }

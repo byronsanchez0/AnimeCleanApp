@@ -26,8 +26,5 @@ fun GetAnimeDetailsQuery.Media.AnimeDetailsQueryToAnimeDetails(): AnimeDetailsMo
                 )
             }
         }
-
-
-
     )
 }

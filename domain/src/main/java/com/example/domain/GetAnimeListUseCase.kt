@@ -16,8 +16,5 @@ class GetAnimeListUseCase @Inject constructor(
     ): List<AnimeModel> {
         return animeRepo
             .getAnimes(page, search, sort, type)
-//            .sortedBy { it.title }
-
     }
-
 }

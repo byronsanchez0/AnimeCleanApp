@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetFavoritesAnimesUseCase @Inject constructor(
-    private val favoriteAnimeRepo: FavoriteAnimeRepo) {
-
-    operator fun invoke(): Flow<List<FavoriteAnime>>{
+    private val favoriteAnimeRepo: FavoriteAnimeRepo
+) {
+    operator fun invoke(): Flow<List<FavoriteAnime>> {
         return favoriteAnimeRepo.favoriteAnime
     }
 }

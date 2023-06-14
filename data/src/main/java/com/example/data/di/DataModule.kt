@@ -23,7 +23,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DataModule {
 
-    //apollo client
     @Provides
     @Singleton
     fun provideApolloClient(): ApolloClient {
@@ -32,7 +31,6 @@ object DataModule {
             .build()
     }
 
-    //favorites
     @Provides
     @Singleton
     fun provideFavDatabase(@ApplicationContext appContext: Context): FavAnimeDataBase {
@@ -47,8 +45,6 @@ object DataModule {
     fun provideFavoriteAnimeDao(database: FavAnimeDataBase): DaoFavAnime {
         return database.animeDao()
     }
-
-    //Repos
 
     @Provides
     @Singleton

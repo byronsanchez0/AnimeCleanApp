@@ -18,6 +18,7 @@ class FavoriteRepoImpl @Inject constructor(
             .map { list ->
                 list.map(EntityFavAnime::toFavoriteAnime)
             }
+
     override suspend fun addFavoriteAnime(favoriteAnime: FavoriteAnime) {
         favoriteAnimeDao.addFavoriteAnime(favoriteAnime.toFavoriteAnimeEntity())
     }
@@ -26,6 +27,3 @@ class FavoriteRepoImpl @Inject constructor(
         favoriteAnimeDao.deleteFavoriteAnime(animeId)
     }
 }
-
-
-

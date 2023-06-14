@@ -1,21 +1,12 @@
 package com.example.animecleanapp.ui.favoritesview
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.Card
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,21 +17,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import coil.compose.rememberAsyncImagePainter
 import com.example.domain.favorites.FavoriteAnime
-import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.flow.StateFlow
-import java.net.URLEncoder
 
-@OptIn(ExperimentalPagerApi::class)
 
 @Composable
 fun FavoritesScreen(
     navController: NavHostController,
     favoriteViewModel: FavoritesViewModel = hiltViewModel()
-
 ) {
     val favoriteUiState by favoriteViewModel.uiStateFavorite.collectAsState()
 
@@ -99,9 +85,4 @@ fun FavoritesScreenContent(
     }
 }
 
-const val CARD_WIDTH_FACTOR = 0.7f
-const val CARD_HEIGHT_FACTOR = 0.7f
-const val CARD_WIDTH_FACTOR_LANDSCAPE = 0.4f
-const val CARD_HEIGHT_FACTOR_LANDSCAPE = 0.5f
-const val PAGER_SNAP_DISTANCE = 4
 

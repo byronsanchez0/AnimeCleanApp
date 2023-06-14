@@ -1,4 +1,4 @@
-package com.example.animecleanapp.paging
+package com.example.animecleanapp.ui.searchview.utils.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -10,14 +10,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 class AnimePagingSource(
     private val getAnimeUseCase: GetAnimeListUseCase,
-    private val search:String? = null,
-    private val sort:List<AnimeSort>,
+    private val search: String? = null,
+    private val sort: List<AnimeSort>,
     private val type: AnimeType,
     private val loadingUI: MutableStateFlow<Boolean>
 ) : PagingSource<Int, AnimeModel>() {
 
     override fun getRefreshKey(state: PagingState<Int, AnimeModel>): Int? {
-        return state.anchorPosition?.let {anchorPosition ->
+        return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
                 ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
         }

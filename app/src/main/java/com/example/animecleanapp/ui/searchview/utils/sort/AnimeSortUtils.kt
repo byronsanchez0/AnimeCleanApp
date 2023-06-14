@@ -1,4 +1,4 @@
-package com.example.animecleanapp.ui.searchview.utils
+package com.example.animecleanapp.ui.searchview.utils.sort
 
 import com.example.domain.search.model.AnimeSort
 

@@ -6,10 +6,10 @@ import com.example.data.GetAnimeListQuery
 import com.example.data.GetCharacterDetailsQuery
 import com.example.data.apolloextension.executeQuery
 import com.example.data.apolloextension.toOptional
-import com.example.data.mappers.remote.toAnimeCharacter
-import com.example.data.mappers.remote.toMediaSort
 import com.example.data.mappers.remote.AnimeDetailsQueryToAnimeDetails
 import com.example.data.mappers.remote.AnimeQueryListToAnimeList
+import com.example.data.mappers.remote.toAnimeCharacter
+import com.example.data.mappers.remote.toMediaSort
 import com.example.domain.AnimeRepo
 import com.example.domain.details.model.AnimeDetailsModel
 import com.example.domain.details.model.Character
@@ -33,7 +33,6 @@ class AnimeRepoImpl @Inject constructor(
             search = search.toOptional(),
             sort = sort.map { it.toMediaSort() }.toOptional()
         )
-
         return apolloClient.executeQuery(query) { data ->
             data
                 ?.Page
@@ -41,8 +40,6 @@ class AnimeRepoImpl @Inject constructor(
                 ?.mapNotNull { it?.AnimeQueryListToAnimeList() }
                 ?: emptyList()
         }
-
-
     }
 
 

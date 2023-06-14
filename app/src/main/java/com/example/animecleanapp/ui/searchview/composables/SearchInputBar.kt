@@ -16,15 +16,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.animecleanapp.ui.searchview.viewmodel.SearchAnimesViewModel
-import com.example.domain.search.model.AnimeModel
+import com.example.animecleanapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchInputBar(
-    onSearch:(String) -> Unit
+    onSearch: (String) -> Unit
 ) {
     var query by remember { mutableStateOf("") }
 
@@ -34,28 +34,26 @@ fun SearchInputBar(
             query = newValue
             onSearch(newValue)
         },
-        label = { Text("Search") },
+        label = { Text(stringResource(R.string.search)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = {
-
         }),
         modifier = Modifier.fillMaxWidth(),
         trailingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                contentDescription = "Search",
+                contentDescription = stringResource(R.string.search),
                 modifier = Modifier
                     .clickable {
-
                     }
             )
         }
     )
 }
 
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun topBarPreview(){
-//    SearchInputBar()
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun topBarPreview(){
+    SearchInputBar(onSearch= {})
+}

@@ -1,10 +1,9 @@
-package com.example.animecleanapp.ui.CharacterDetails
+package com.example.animecleanapp.ui.characterview
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.GetCharacterDetailsUseCase
-import com.example.domain.details.model.AnimeDetailsModel
 import com.example.domain.details.model.Character
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,5 +28,4 @@ class CharacterDetailsViewModel @Inject constructor(
             }
         }
     }
-
 }

@@ -12,5 +12,4 @@ data class EntityFavAnime (
     val title: String,
     @ColumnInfo(name = "coverImage")
     val coverImage: String,
-
 )

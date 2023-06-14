@@ -1,4 +1,4 @@
-package com.example.animecleanapp.ui.CharacterDetails
+package com.example.animecleanapp.ui.characterview
 
 import android.util.Log
 import androidx.compose.foundation.Image

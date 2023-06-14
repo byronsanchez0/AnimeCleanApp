@@ -1,11 +1,13 @@
-package com.example.newsapp.components.navigation
+package com.example.animecleanapp.ui.navigation
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun BottomBar(navHostController: NavHostController) {
@@ -27,4 +29,11 @@ fun BottomBar(navHostController: NavHostController) {
             )
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun BottomBarPreview(){
+     val navHostController = rememberNavController()
+    BottomBar(navHostController = navHostController)
 }

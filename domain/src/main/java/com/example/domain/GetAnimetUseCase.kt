@@ -6,9 +6,7 @@ import javax.inject.Inject
 class GetAnimeUseCase @Inject constructor(
     private val animeRepo: AnimeRepo
 ) {
-    suspend operator fun invoke(id: Int): AnimeDetailsModel?{
+    suspend operator fun invoke(id: Int): AnimeDetailsModel? {
         return animeRepo.getAnimeDetails(id)
-
     }
-
 }
