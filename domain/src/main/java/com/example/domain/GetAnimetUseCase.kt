@@ -1,14 +1,12 @@
 package com.example.domain
 
-import com.example.domain.model.AnimeDetailsModel
-import com.example.domain.model.AnimeModel
+import com.example.domain.details.model.AnimeDetailsModel
+import javax.inject.Inject
 
-class GetAnimeUseCase(
+class GetAnimeUseCase @Inject constructor(
     private val animeRepo: AnimeRepo
 ) {
-    suspend fun execute(id: Int): AnimeDetailsModel?{
-        return animeRepo.getAnimesDetails(id)
-
+    suspend operator fun invoke(id: Int): AnimeDetailsModel? {
+        return animeRepo.getAnimeDetails(id)
     }
-
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="mainhorizontalpadding10dp">10dp</dimen>
+    <dimen name="spacersize12dp">12dp</dimen>
+    <dimen name="spacersize5dp">5dp</dimen>
+</resources>

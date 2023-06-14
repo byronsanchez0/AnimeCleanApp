@@ -1,20 +1,19 @@
-query GetAnimeList($id: Int, $page: Int, $perPage: Int, $search: String) {
-    Page (page: $page, perPage: $perPage) {
+query GetAnimeList($page: Int,$perPage:Int,$type: MediaType,$sort: [MediaSort],$search: String) {
+    Page(page: $page,perPage: $perPage) {
         pageInfo {
             total
-            currentPage
-            lastPage
             hasNextPage
             perPage
+            currentPage
         }
-        media (id: $id, search: $search) {
+        media(type: $type, sort: $sort, search: $search) {
             id
             title {
-                english
-                native
                 romaji
             }
-            coverImage{large}
+            coverImage {
+                extraLarge
+            }
         }
     }
 }

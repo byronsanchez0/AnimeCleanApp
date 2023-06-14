@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Anime CleanApp</string>
+    <string name="anime">Anime App</string>
+    <string name="favorite">favorite</string>
+    <string name="filter">filter\n</string>
+    <string name="add_to_favorites">addtofavorites</string>
+    <string name="brotherhood">anime brotherhood is an amazing anime</string>
+    <string name="search">Search</string>
+    <string name="users_score">"Users score: "</string>
+    <string name="episodes">"Episodes: "</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="genres">Genres: </string>
+    <string name="name">"Name: "</string>
+    <string name="naruto">naruto es un anime genial</string>
+    <string name="anime_japanese_name">"Anime Japanese name: "</string>
+    <string name="anime_english_name">"Anime English name: "</string>
 </resources>

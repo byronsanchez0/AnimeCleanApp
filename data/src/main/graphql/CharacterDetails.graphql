@@ -3,14 +3,12 @@ query GetCharacterDetails ($characterId: Int)
     Character(id: $characterId) {
         id
         name {
-            first
-            last
+            full
         }
         age
         image {
             medium
         }
         description
-
     }
 }
