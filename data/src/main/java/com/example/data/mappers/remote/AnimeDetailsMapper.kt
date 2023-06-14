@@ -18,7 +18,7 @@ fun GetAnimeDetailsQuery.Media.AnimeDetailsQueryToAnimeDetails(): AnimeDetailsMo
         characters = characters?.nodes?.mapNotNull { character ->
             character?.let {
                 Character(
-                    id = id,
+                    id = it.id,
                     name = it.name?.first,
                     age = it.age,
                     image = it.image?.medium.orEmpty(),

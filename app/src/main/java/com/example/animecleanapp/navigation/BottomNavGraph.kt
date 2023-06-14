@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.animecleanapp.ui.CharacterDetails.CharacterDetailsScreen
 import com.example.animecleanapp.ui.detailsview.DetailsScreen
 import com.example.animecleanapp.ui.favoritesview.FavoritesScreen
 import com.example.animecleanapp.ui.searchview.composables.SearchScreen
@@ -41,7 +42,7 @@ fun BottomNavGraph(
         )
         { backStackEntry ->
             backStackEntry.arguments?.getInt("characterId")?.let { characterId ->
-                DetailsScreen(characterId, navHostController)
+                CharacterDetailsScreen(characterId)
             }
 
         }

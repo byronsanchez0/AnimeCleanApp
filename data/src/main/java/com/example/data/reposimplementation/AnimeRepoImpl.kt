@@ -27,10 +27,6 @@ class AnimeRepoImpl @Inject constructor(
         sort: List<AnimeSort>,
         type: AnimeType
     ): List<AnimeModel> {
-//
-//        if (search == "") {
-//            return emptyList()
-//        }
 
         val query = GetAnimeListQuery(
             page = page.toOptional(),
