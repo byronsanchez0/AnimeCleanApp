@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -26,21 +25,14 @@ import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import androidx.paging.PagingData
-import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.rememberAsyncImagePainter
 import com.example.animecleanapp.R
-import com.example.animecleanapp.ui.searchview.composables.SearchScreen
 import com.example.animecleanapp.ui.theme.AnimeCleanAppTheme
 import com.example.domain.details.model.Character
-import com.example.domain.search.model.AnimeModel
-import kotlinx.coroutines.flow.flowOf
 
 
 @Composable
@@ -49,7 +41,6 @@ fun CharacterDetailsScreen(
     characterDetailsViewModel: CharacterDetailsViewModel = hiltViewModel()
 ) {
     val characterDetails by characterDetailsViewModel.character.collectAsState()
-
     characterDetails?.let { character ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -57,7 +48,6 @@ fun CharacterDetailsScreen(
         ) {
             CharacterDetailsScreenContent(characterDetails = character)
         }
-
     } ?: run {
         characterDetailsViewModel.fetchCharacterDetails(characterId)
         Log.wtf("id no furula", "$characterId")
@@ -90,29 +80,26 @@ fun CharacterDetailsScreenContent(characterDetails: Character) {
                             .clip(RectangleShape),
                         contentScale = ContentScale.Fit
                     )
-
                 } else {
                     Image(
                         painter = rememberAsyncImagePainter(model = characterDetails.image),
                         contentDescription = "Image",
                         modifier = Modifier
-                            .size(200.dp)
+                            .size(250.dp)
                             .clip(RectangleShape),
                         contentScale = ContentScale.Fit
                     )
                 }
             }
-
-            characterDetails.name?.let { Text(text = it, textAlign = TextAlign.Center) }
+            characterDetails.name?.let { Text(text = it, fontWeight = FontWeight.Bold) }
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacersize12dp)))
-            characterDetails.age?.let { Text(text = "Age: $it") }
+            characterDetails.age?.let { Text(text = "Age: $it", fontWeight = FontWeight.Bold) }
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacersize12dp)))
             characterDetails.description?.let { Text(text = it) }
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacersize12dp)))
         }
     }
 }
-
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

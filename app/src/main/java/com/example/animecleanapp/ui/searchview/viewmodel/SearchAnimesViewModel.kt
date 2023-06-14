@@ -101,16 +101,6 @@ class SearchAnimesViewModel @Inject constructor(
         }
     }
 
-//    private fun selectedAnime(id:Int){
-//        viewModelScope.launch {
-//            _uiState.update {it.copy (
-//                selectedAnime = getDetailsUseCase.execute(id)
-//            )
-//
-//            }
-//        }
-//    }
-
     private fun createPaging(
         type: AnimeType,
         sort: List<AnimeSort>,
@@ -140,21 +130,7 @@ class SearchAnimesViewModel @Inject constructor(
         }.flatMapLatest { (type, sort, search) ->
             createPaging(type, sort, search).flow
         }.cachedIn(viewModelScope)
-
-    //    fun getAnimeList(query : String){
-//        viewModelScope.launch{
-//            withContext(Dispatchers.IO) {
-//                val animes = getAnimeListUseCase.execute()
-//                println(animes)
-//            }
-//        }
-//    }
-//    fun getAnime(){
-//        val animes = getAnimeUseCase
-//        println(animes)
-//    }
     companion object {
         private const val PAGE_SIZE = 10
     }
-
 }
