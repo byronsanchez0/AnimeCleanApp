@@ -1,5 +1,6 @@
 package com.example.data
 
+import io.mockk.mockk
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +12,10 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
+    fun searchAnimeText() {
+//        val searchSample = mockk<>()
+
+
         assertEquals(4, 2 + 2)
     }
 }
