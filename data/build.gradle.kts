@@ -66,6 +66,9 @@ dependencies {
     implementation(libs.apollographql)
     implementation(libs.bundles.room)
     kapt(libs.room.compiler)
+    testImplementation(libs.mock)
+    testImplementation(libs.core.testing)
+    testImplementation(libs.coroutines.test)
 
 
 
