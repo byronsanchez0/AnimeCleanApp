@@ -7,10 +7,10 @@ import com.example.data.local.DaoFavAnime
 import com.example.data.local.FavAnimeDataBase
 import com.example.data.reposimplementation.AnimeRepoImpl
 import com.example.data.reposimplementation.FavoriteRepoImpl
-import com.example.domain.AnimeRepo
-import com.example.domain.GetAnimeListUseCase
-import com.example.domain.GetAnimeUseCase
-import com.example.domain.GetCharacterDetailsUseCase
+import com.example.domain.repositories.AnimeRepo
+import com.example.domain.usecases.GetAnimeListUseCase
+import com.example.domain.usecases.GetAnimeUseCase
+import com.example.domain.usecases.GetCharacterDetailsUseCase
 import com.example.domain.repositories.FavoriteAnimeRepo
 import dagger.Module
 import dagger.Provides

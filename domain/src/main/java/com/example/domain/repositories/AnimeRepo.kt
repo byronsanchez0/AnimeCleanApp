@@ -1,4 +1,4 @@
-package com.example.domain
+package com.example.domain.repositories
 
 import com.example.domain.details.model.AnimeDetailsModel
 import com.example.domain.details.model.Character

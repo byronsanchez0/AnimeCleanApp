@@ -2,7 +2,7 @@ package com.example.animecleanapp.ui.searchview.utils.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.domain.GetAnimeListUseCase
+import com.example.domain.usecases.GetAnimeListUseCase
 import com.example.domain.search.model.AnimeModel
 import com.example.domain.search.model.AnimeSort
 import com.example.domain.search.model.AnimeType

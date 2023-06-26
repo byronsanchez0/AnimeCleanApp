@@ -10,7 +10,7 @@ import com.example.data.mappers.remote.AnimeDetailsQueryToAnimeDetails
 import com.example.data.mappers.remote.AnimeQueryListToAnimeList
 import com.example.data.mappers.remote.toAnimeCharacter
 import com.example.data.mappers.remote.toMediaSort
-import com.example.domain.AnimeRepo
+import com.example.domain.repositories.AnimeRepo
 import com.example.domain.details.model.AnimeDetailsModel
 import com.example.domain.details.model.Character
 import com.example.domain.search.model.AnimeModel

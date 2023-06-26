@@ -1,5 +1,6 @@
-package com.example.domain
+package com.example.domain.usecases
 
+import com.example.domain.repositories.AnimeRepo
 import com.example.domain.search.model.AnimeModel
 import com.example.domain.search.model.AnimeSort
 import com.example.domain.search.model.AnimeType

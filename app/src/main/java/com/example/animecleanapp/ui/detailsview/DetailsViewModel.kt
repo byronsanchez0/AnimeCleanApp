@@ -3,7 +3,7 @@ package com.example.animecleanapp.ui.detailsview
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.GetAnimeUseCase
+import com.example.domain.usecases.GetAnimeUseCase
 import com.example.domain.details.model.AnimeDetailsModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,5 +26,6 @@ class DetailsViewModel @Inject constructor(
                 Log.d("Error","${e.message}")
             }
         }
+
     }
 }
