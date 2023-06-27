@@ -21,6 +21,7 @@ compose_material_icons_extended = "1.4.3"
 mock_version = "1.13.5"
 core_testing_version = "2.2.0"
 coroutines_test = "1.6.4"
+apollo-testing-support-version = "3.8.2"
 
 [libraries]
 javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
@@ -48,10 +49,11 @@ compose_material_icons_extended = { group = "androidx.compose.material", name = 
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose"}
 
 kotlinx_coroutines_core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx_coroutines_core" }
+
 mock = { module = "io.mockk:mockk", version.ref= "mock_version" }
 core-testing = { module = "androidx.arch.core:core-testing", version.ref = "core_testing_version" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines_test" }
-
+testImplementation-apollo = { module = "com.apollographql.apollo3:apollo-testing-support", version.ref = "apollo-testing-support-version" }
 [plugins]
 #com-android-application = { id = "com.apollographql.apollo3", version.ref = "apollographql" }
 

@@ -2,7 +2,12 @@ package com.example.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.annotations.ApolloExperimental
+import com.apollographql.apollo3.testing.QueueTestNetworkTransport
+import com.apollographql.apollo3.testing.enqueueTestResponse
+import com.example.data.apolloextension.executeQuery
 import com.example.data.apolloextension.toOptional
+import com.example.data.mappers.remote.AnimeQueryListToAnimeList
 import com.example.data.mappers.remote.toAnimeMediaType
 import com.example.data.mappers.remote.toMediaSort
 import com.example.data.reposimplementation.AnimeRepoImpl
@@ -21,6 +26,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.Queue
 
 class AnimeRepoImplTest {
 
@@ -35,6 +41,24 @@ class AnimeRepoImplTest {
         sort = listOf(AnimeSort.POPULARITY_DESC).map { it.toMediaSort()}.toOptional(),
         search = "anime".toOptional()
     )
+
+    private var queryData = GetAnimeListQuery.Data(
+        GetAnimeListQuery.Page(
+            pageInfo = GetAnimeListQuery.PageInfo(
+                currentPage = 1,
+                hasNextPage = true,
+                perPage = 2,
+                total = 5
+            ),
+            media = listOf()
+        )
+
+
+    )
+
+
+
+
 
 //    private var
 
@@ -60,23 +84,22 @@ class AnimeRepoImplTest {
     @get:Rule
     val rule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @OptIn(ApolloExperimental::class)
     @Before
     fun onBefore() {
-        apolloClient = ApolloClient.Builder()
-            .networkTransport(apolloClient.networkTransport)
-            .build()
+
         MockKAnnotations.init(this)
         animeRepoImpl = AnimeRepoImpl(apolloClient)
         Dispatchers.setMain(Dispatchers.Unconfined)
 
-        coEvery {
-            animeRepoImpl.getAnimes(
-                any(),
-                any(),
-                any(),
-                any()
-            )
-        } returns fakeAnimeList
+//        coEvery {
+//            animeRepoImpl.getAnimes(
+//                any(),
+//                any(),
+//                any(),
+//                any()
+//            )
+//        } returns fakeAnimeList
 
     }
 
@@ -85,9 +108,13 @@ class AnimeRepoImplTest {
         Dispatchers.resetMain()
     }
 
+    @OptIn(ApolloExperimental::class)
     @Test
     fun getAnimesTest() = runBlocking {
         //Given
+        apolloClient = ApolloClient.Builder()
+            .networkTransport(QueueTestNetworkTransport())
+            .build()
 
 
         val fakeAnimeSortList = listOf(
@@ -98,13 +125,9 @@ class AnimeRepoImplTest {
 //        animeRepoImpl.getAnimes(
 //            page = 1,
 //            sort = listOf(
-//                AnimeSort.EPISODES_DESC,
-//                AnimeSort.START_DATE,
-//                AnimeSort.POPULARITY_DESC
+//                AnimeSort.EPISODES_DESC
 //            ),
 //            type = AnimeType.ANIME,
-//
-//
 //            )
 //        coEvery {
 //            animeRepoImpl.getAnimes(
@@ -115,13 +138,19 @@ class AnimeRepoImplTest {
 //            )
 //        } returns fakeAnimeList
 
-        apolloClient.
+//        coEvery {
+//            apolloClient.executeQuery(queryAnime, {})
+//
+//        }returns queryData
 
+        apolloClient
+            .enqueueTestResponse(queryAnime, queryData)
         //WHEN
-        val response =
-            animeRepoImpl.getAnimes(1, "anime", fakeAnimeSortList, fakeMediaType)
+        val data = apolloClient.query(queryAnime).execute().data?.Page?.media?.mapNotNull { it?.AnimeQueryListToAnimeList() }?: emptyList()
+//        val response =
+//            animeRepoImpl.getAnimes(1, "anime", fakeAnimeSortList, fakeMediaType)
 
         //then
-        assert(response == fakeAnimeList)
+        assert(data == listOf<AnimeModel>())
     }
 }

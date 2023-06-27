@@ -69,6 +69,7 @@ dependencies {
     testImplementation(libs.mock)
     testImplementation(libs.core.testing)
     testImplementation(libs.coroutines.test)
+    testImplementation(libs.testImplementation.apollo)
 
 
 
